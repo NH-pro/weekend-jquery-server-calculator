@@ -2,4 +2,4 @@
 
 [x] link everything together.
 
-[] npm init, npm install express, npm install nodemon, .gitignore and put node-modules in it.
+[x] npm install express, npm install nodemon, .gitignore and put node-modules in it.
