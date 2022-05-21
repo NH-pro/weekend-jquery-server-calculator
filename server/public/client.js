@@ -1,19 +1,21 @@
 $(document).ready(onReady);
 
-function onReady() {
-    console.log('--- jQuery is connected! ---');
-
-    $('#equation_input_container').on('click', '#equals_button', collectEquationInputs)
-};
 
 let firstNumber;
 let operation;
 let secondNumber;
 // global vars to temporarily store user input values
 
-let serverAnswer;
-let serverHistory;
+let serverAnswer = 0;
+let serverHistory = [];
 // global vars to temp store values send from server side.
+
+
+function onReady() {
+    console.log('--- jQuery is connected! ---');
+
+    $('#equation_input_container').on('click', '#equals_button', collectEquationInputs)
+};
 
 function collectEquationInputs() {
     console.log(`--- In sendEquationInputs! ---`);
@@ -27,8 +29,6 @@ function collectEquationInputs() {
     // Test to see if values are connected properly.
 
     sendEquationInputs();
-    getAnswerPlusHist();
-
 };
 
 function sendEquationInputs() {
@@ -51,6 +51,8 @@ function sendEquationInputs() {
     }).then(() => {
         console.log('POSTed equation input!');
     });
+
+    getAnswerPlusHist();
 };
 
 function getAnswerPlusHist() {
@@ -66,7 +68,22 @@ function getAnswerPlusHist() {
 
         serverAnswer = response.answer;
         serverHistory = response.history;
+        // Assign response key:value to a var.
+
+        $('#answer').empty();
+        $('#history').empty();
+        // Empty DOM target
+
+        $('#answer').append(`Answer: ${serverAnswer}`);
+        // Append DOM target with 'serverAnswer' value.
+
+        for (let item of serverHistory) {
+            $('#history').append(`<li>${item}</li>`);
+        };
+        // Append DOM target with 'serverHistory' values for each item in array.
+
+
     });
     // GET request for 'answer' and 'history' from server.
-    
+
 }
