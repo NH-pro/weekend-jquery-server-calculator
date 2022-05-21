@@ -8,4 +8,6 @@
 
 [x] Setup base server side stuff. Like connecting express.
 
+[x] Get client.js to collect user input values into an object.
+
 [] 
