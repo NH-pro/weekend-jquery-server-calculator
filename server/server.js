@@ -11,3 +11,6 @@ app.listen(5000, () => {
 });
 // Server request listener, makes the server run on port 5000.
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+// body-parser stuff
