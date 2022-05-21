@@ -25,7 +25,8 @@ let equation;
 let answer;
 // global var of the answer for the equation.
 
-let history;
+let history = [];
+// global array to store the calculation history.
 
 app.post('/calculate', (req, res) => {
     console.log(`--- In POST /calculate! --- `);
@@ -44,24 +45,25 @@ function whichCalculation() {
     console.log(`--- In whichCalculation function! ---`);
      if (equation.operation === '+') {
         answer = Number(equation.firstNumber) + Number(equation.secondNumber);
-        history = `${equation.firstNumber} + ${equation.secondNumber} = ${answer}`;
+        history.push( `${equation.firstNumber} + ${equation.secondNumber} = ${answer}`);
      };
      if (equation.operation === '-') {
         answer = Number(equation.firstNumber) - Number(equation.secondNumber);
-        history = `${equation.firstNumber} - ${equation.secondNumber} = ${answer}`;
+        history.push( `${equation.firstNumber} - ${equation.secondNumber} = ${answer}`);
      };
      if (equation.operation === '*') {
         answer = Number(equation.firstNumber) * Number(equation.secondNumber);
-        history = `${equation.firstNumber} * ${equation.secondNumber} = ${answer}`;
+        history.push( `${equation.firstNumber} * ${equation.secondNumber} = ${answer}`);
      };
      if (equation.operation === '/') {
         answer = Number(equation.firstNumber) / Number(equation.secondNumber);
-        history = `${equation.firstNumber} / ${equation.secondNumber} = ${answer}`;
+        history.push( `${equation.firstNumber} / ${equation.secondNumber} = ${answer}`);
      };
      console.log(answer);
 }
+// This funciton figures out what kind of calculation to plug in our number input values.
 
 function sendBackAnswer() {
     console.log(`--- In sendBackAnswer function ---`);
-    console.log(history);
+    console.log(`History array:`,history);
 }
