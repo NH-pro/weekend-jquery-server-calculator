@@ -14,7 +14,14 @@ let serverHistory = [];
 function onReady() {
     console.log('--- jQuery is connected! ---');
 
-    $('#equation_input_container').on('click', '#equals_button', collectEquationInputs)
+    $('#equation_input_container').on('click', '#equals_button', collectEquationInputs);
+    $('#equation_input_container').on('click', '#clear_button', clearInputs);
+};
+
+function clearInputs(){
+    $('#first_number').val('');
+    $('#operation_select').val('+'); // resets default value to '+' instead of clearing it.
+    $('#second_number').val('');
 };
 
 function collectEquationInputs() {
