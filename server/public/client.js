@@ -11,6 +11,10 @@ let operation;
 let secondNumber;
 // global vars to temporarily store user input values
 
+let serverAnswer;
+let serverHistory;
+// global vars to temp store values send from server side.
+
 function collectEquationInputs() {
     console.log(`--- In sendEquationInputs! ---`);
     // Test to see if function is connected to click event.
@@ -23,6 +27,8 @@ function collectEquationInputs() {
     // Test to see if values are connected properly.
 
     sendEquationInputs();
+    getAnswerPlusHist();
+
 };
 
 function sendEquationInputs() {
@@ -46,3 +52,21 @@ function sendEquationInputs() {
         console.log('POSTed equation input!');
     });
 };
+
+function getAnswerPlusHist() {
+    console.log('--- In getAnswerPlusHist function! ---')
+    // Test connection
+
+    $.ajax({
+        url: '/calculate',
+        method: 'GET'
+    }).then((response) => {
+        console.log(response);
+        // Check if response from server side is correct.
+
+        serverAnswer = response.answer;
+        serverHistory = response.history;
+    });
+    // GET request for 'answer' and 'history' from server.
+    
+}
