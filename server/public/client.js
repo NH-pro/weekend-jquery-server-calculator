@@ -15,9 +15,9 @@ function collectEquationInputs() {
     console.log(`--- In sendEquationInputs! ---`);
     // Test to see if function is connected to click event.
 
-    firstNumber = $('#first_number').val();
+    firstNumber = Number($('#first_number').val());
     operation = $('#operation_select').val();
-    secondNumber = $('#second_number').val();
+    secondNumber = Number($('#second_number').val());
     // Assign input values from html and assign to vars.
     console.log(`These are the user's inputs:`,firstNumber, operation, secondNumber);
     // Test to see if values are connected properly.

@@ -10,4 +10,4 @@
 
 [x] Get client.js to collect user input values into an object.
 
-[] 
+[] Get client. js to send input values object to server.js.
