@@ -25,7 +25,9 @@ let equation;
 let answer;
 // global var of the answer for the equation.
 
-let history;
+let history = [];
+// global array to store the calculation history.
+
 
 app.post('/calculate', (req, res) => {
     console.log(`--- In POST /calculate! --- `);
@@ -37,31 +39,43 @@ app.post('/calculate', (req, res) => {
     // Test connection
 
     whichCalculation();
-    sendBackAnswer();
+   // sendBackAnswer();
 });
 
 function whichCalculation() {
     console.log(`--- In whichCalculation function! ---`);
      if (equation.operation === '+') {
         answer = Number(equation.firstNumber) + Number(equation.secondNumber);
-        history = `${equation.firstNumber} + ${equation.secondNumber} = ${answer}`;
+        history.push( `${equation.firstNumber} + ${equation.secondNumber} = ${answer}`);
      };
      if (equation.operation === '-') {
         answer = Number(equation.firstNumber) - Number(equation.secondNumber);
-        history = `${equation.firstNumber} - ${equation.secondNumber} = ${answer}`;
+        history.push( `${equation.firstNumber} - ${equation.secondNumber} = ${answer}`);
      };
      if (equation.operation === '*') {
         answer = Number(equation.firstNumber) * Number(equation.secondNumber);
-        history = `${equation.firstNumber} * ${equation.secondNumber} = ${answer}`;
+        history.push( `${equation.firstNumber} * ${equation.secondNumber} = ${answer}`);
      };
      if (equation.operation === '/') {
         answer = Number(equation.firstNumber) / Number(equation.secondNumber);
-        history = `${equation.firstNumber} / ${equation.secondNumber} = ${answer}`;
+        history.push( `${equation.firstNumber} / ${equation.secondNumber} = ${answer}`);
      };
      console.log(answer);
 }
+// This funciton figures out what kind of calculation to plug in our number input values.
 
-function sendBackAnswer() {
-    console.log(`--- In sendBackAnswer function ---`);
-    console.log(history);
-}
+
+app.get('/calculate', (req, res) => {
+    console.log('--- In GET /calculate! ---')
+    // Test connection
+    let solution = {
+        answer: answer,
+        history: history
+    };
+    // Make an object to respond send to client side.
+
+    console.log(solution);
+    // Check if var is correct.
+    res.send(solution);
+    // Respond by sending answer and history to client side.
+})
