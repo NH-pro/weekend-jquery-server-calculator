@@ -31,8 +31,9 @@ function clearHistory() {
     $.ajax({
         url: '/delete-history',
         method: 'DELETE'
-    }).then(() => {
-        console.log(`Server history deleted!`);
+    }).then((response) => {
+        console.log(response);
+        // Confirm history delete from server side.
     });
 }
 

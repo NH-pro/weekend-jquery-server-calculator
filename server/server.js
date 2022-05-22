@@ -79,3 +79,15 @@ app.get('/calculate', (req, res) => {
     res.send(solution);
     // Respond by sending answer and history to client side.
 })
+
+
+app.delete('/delete-history', (req, res) => {
+   console.log(`--- In DELETE /delete-history! ---`);
+   // Test connection
+
+   history = [];
+   // Change history into an empty array.
+
+   res.send(`Server history has been deleted!`)
+   // response
+})
