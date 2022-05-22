@@ -16,9 +16,20 @@ function onReady() {
 
     $('#equation_input_container').on('click', '#equals_button', collectEquationInputs);
     $('#equation_input_container').on('click', '#clear_button', clearInputs);
-    $('#equation_input_container').on('click', '#clear_history', clearHistory)
+    $('#equation_input_container').on('click', '#clear_history', clearHistory);
+    $('#calculator_container').on('click', '.calc_btn', typeEquation);
     // Click events
 };
+
+function typeEquation() {
+    console.log(`--- In typeEquation function ---`);
+    // Test Connection
+    let calcClick = $('#equation_input').val() + $(this).text();
+    // Make new var of old input value plus new calc button input value.
+    $('#equation_input').append().val(`${calcClick}`);
+    // append input field's value with new calc button values.
+
+}
 
 function clearHistory() {
     console.log(`--- In clearHistory function ---`);

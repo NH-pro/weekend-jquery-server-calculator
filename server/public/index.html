@@ -11,7 +11,8 @@
 </head>
 <body>
     <div id="equation_input_container">
-        <input type="number" id="first_number" placeholder="first number">
+        <input id="equation_input" placeholder="enter equation">
+        <!-- <input id="first_number" placeholder="first number">
         <select id="operation_select" size="1">
             <option value="+">+</option>
             <option value="-">-</option>
@@ -19,23 +20,23 @@
             <option value="/">/</option>
         </select>
         <input type="number" id="second_number" placeholder="second number">
-        <button id="equals_button">=</button>
+        <button id="equals_button">=</button> -->
         <button id="clear_button">C</button>
         <button id="clear_history">Clear History</button>
     </div>
 
     <div id="calculator_container">
         <div>
-            <span> <button id="7">7</button> <button id="8">8</button> <button id="9">9</button> <button id="+">+</button>  </span>
+            <span> <button class="calc_btn" id="7">7</button> <button class="calc_btn" id="8">8</button> <button class="calc_btn" id="9">9</button> <button class="calc_btn" id="+">+</button>  </span>
         </div>
         <div>
-            <span> <button id="4">4</button> <button id="5">5</button> <button id="6">6</button> <button id="-">-</button>  </span>
+            <span> <button class="calc_btn" id="4">4</button> <button class="calc_btn" id="5">5</button> <button class="calc_btn" id="6">6</button> <button class="calc_btn" id="-">-</button>  </span>
         </div>
         <div>
-            <span> <button id="1">1</button> <button id="2">2</button> <button id="3">3</button> <button id="*">*</button>  </span>
+            <span> <button class="calc_btn" id="1">1</button> <button class="calc_btn" id="2">2</button> <button class="calc_btn" id="3">3</button> <button class="calc_btn" id="*">*</button>  </span>
         </div>
         <div>
-            <span> <button id="0">0</button> <button id=".">.</button> <button id="=">=</button> <button id="/">/</button>  </span>
+            <span> <button class="calc_btn" id="0">0</button> <button class="calc_btn" id=".">.</button> <button id="equals_button">=</button> <button class="calc_btn" id="/">/</button>  </span>
         </div>
     </div>
     
