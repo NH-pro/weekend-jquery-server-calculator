@@ -16,7 +16,25 @@ function onReady() {
 
     $('#equation_input_container').on('click', '#equals_button', collectEquationInputs);
     $('#equation_input_container').on('click', '#clear_button', clearInputs);
+    $('#equation_input_container').on('click', '#clear_history', clearHistory)
+    // Click events
 };
+
+function clearHistory() {
+    console.log(`--- In clearHistory function ---`);
+    // Test connection
+
+    serverHistory = [];
+    $('#history').empty();
+    // Change client side stored server history to an empty array and empty the history <li> tags on the DOM.
+
+    $.ajax({
+        url: '/delete-history',
+        method: 'DELETE'
+    }).then(() => {
+        console.log(`Server history deleted!`);
+    });
+}
 
 function clearInputs(){
     $('#first_number').val('');
