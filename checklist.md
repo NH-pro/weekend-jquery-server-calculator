@@ -1,3 +1,5 @@
+--- Base Mode ---
+
 [x] Create initial files: index.html, style.css, jQuery.js, client.js, and server.js. Put them in Server and Public files.
 
 [x] Link everything together.
@@ -10,4 +12,13 @@
 
 [x] Get client.js to collect user input values into an object.
 
-[] Get client. js to send input values object to server.js.
+[x] Get client. js to send input values object to server.js.
+
+// Didn't keep updating my checklist while I was working.
+
+
+--- Stretch Goals ---
+
+[] Learn about DELETE requests.
+
+[] Add DELETE request client side.
