@@ -42,16 +42,15 @@ function clearHistory() {
     $.ajax({
         url: '/delete-history',
         method: 'DELETE'
-    }).then((response) => {
+    }).then(function(response) {
         console.log(response);
         // Confirm history delete from server side.
     });
 }
 
 function clearInputs(){
-    $('#first_number').val('');
-    $('#operation_select').val('+'); // resets default value to '+' instead of clearing it.
-    $('#second_number').val('');
+    $('#equation_input').val('');
+    // Clears input field by setting its value to ''.
 };
 
 function collectEquationInputs() {
@@ -85,7 +84,7 @@ function sendEquationInputs() {
         url:'/calculate',
         method: 'POST',
         data: equation // send server 'equation' object
-    }).then(() => {
+    }).then(function() {
         console.log('POSTed equation input!');
     });
 
@@ -99,7 +98,7 @@ function getAnswerPlusHist() {
     $.ajax({
         url: '/calculate',
         method: 'GET'
-    }).then((response) => {
+    }).then(function(response) {
         console.log(response);
         // Check if response from server side is correct.
 
