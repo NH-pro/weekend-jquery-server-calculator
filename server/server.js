@@ -12,8 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // body-parser stuff, NOT 100% WHAT IT DOES THOUGH.
 
+const PORT = process.env.PORT || 5000;
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
     console.log(`The Server is listening...for that sweet sweet client.js voice 👂`);
 });
 // Server request listener, makes the server run on port 5000.

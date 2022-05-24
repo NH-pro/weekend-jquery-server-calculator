@@ -16,9 +16,20 @@ function onReady() {
 
     $('#equation_input_container').on('click', '#equals_button', collectEquationInputs);
     $('#equation_input_container').on('click', '#clear_button', clearInputs);
-    $('#equation_input_container').on('click', '#clear_history', clearHistory)
+    $('#equation_input_container').on('click', '#clear_history', clearHistory);
+    $('#calculator_container').on('click', '.calc_btn', typeEquation);
     // Click events
 };
+
+function typeEquation() {
+    console.log(`--- In typeEquation function ---`);
+    // Test Connection
+    let calcClick = $('#equation_input').val() + $(this).text();
+    // Make new var of old input value plus new calc button input value.
+    $('#equation_input').append().val(`${calcClick}`);
+    // append input field's value with new calc button values.
+
+}
 
 function clearHistory() {
     console.log(`--- In clearHistory function ---`);
@@ -31,16 +42,15 @@ function clearHistory() {
     $.ajax({
         url: '/delete-history',
         method: 'DELETE'
-    }).then((response) => {
+    }).then(function(response) {
         console.log(response);
         // Confirm history delete from server side.
     });
 }
 
 function clearInputs(){
-    $('#first_number').val('');
-    $('#operation_select').val('+'); // resets default value to '+' instead of clearing it.
-    $('#second_number').val('');
+    $('#equation_input').val('');
+    // Clears input field by setting its value to ''.
 };
 
 function collectEquationInputs() {
@@ -74,7 +84,7 @@ function sendEquationInputs() {
         url:'/calculate',
         method: 'POST',
         data: equation // send server 'equation' object
-    }).then(() => {
+    }).then(function() {
         console.log('POSTed equation input!');
     });
 
@@ -88,7 +98,7 @@ function getAnswerPlusHist() {
     $.ajax({
         url: '/calculate',
         method: 'GET'
-    }).then((response) => {
+    }).then(function(response) {
         console.log(response);
         // Check if response from server side is correct.
 
