@@ -41,6 +41,8 @@ app.post('/calculate', (req, res) => {
 
     whichCalculation();
    // sendBackAnswer();
+
+   res.sendStatus(201) 
 });
 
 function whichCalculation() {
