@@ -33,37 +33,57 @@ let history = [];
 app.post('/calculate', (req, res) => {
     console.log(`--- In POST /calculate! --- `);
     // Test connection
-    equation = req.body;
+    equation = req.body.eq.split('');
     // Change 'equation' value to req.body, aka the object sent from client user.
 
     console.log(`Equation values from user:`, equation);
     // Test connection
 
-    whichCalculation();
+    whichCalculation(equation);
    // sendBackAnswer();
 
    res.sendStatus(201) 
 });
 
-function whichCalculation() {
+function whichCalculation(array) {
     console.log(`--- In whichCalculation function! ---`);
-     if (equation.operation === '+') {
-        answer = Number(equation.firstNumber) + Number(equation.secondNumber);
-        history.push( `${equation.firstNumber} + ${equation.secondNumber} = ${answer}`);
-     };
-     if (equation.operation === '-') {
-        answer = Number(equation.firstNumber) - Number(equation.secondNumber);
-        history.push( `${equation.firstNumber} - ${equation.secondNumber} = ${answer}`);
-     };
-     if (equation.operation === '*') {
-        answer = Number(equation.firstNumber) * Number(equation.secondNumber);
-        history.push( `${equation.firstNumber} * ${equation.secondNumber} = ${answer}`);
-     };
-     if (equation.operation === '/') {
-        answer = Number(equation.firstNumber) / Number(equation.secondNumber);
-        history.push( `${equation.firstNumber} / ${equation.secondNumber} = ${answer}`);
-     };
-     console.log(answer);
+
+    let calcArray = array;
+    console.log(calcArray);
+
+    let firstVar = [];
+    let operator;
+    let secondVar = [];
+
+    for(let item of calcArray){
+       if(item !== '+' && item !== '-' && item !== '*' && item !== '/') {
+         firstVar.push(item);
+       }
+       else {
+         operator = item;
+         calcArray.splice(item);
+         secondVar = calcArray;
+       }
+    };
+
+    console.log(`first number: ${firstVar}, operator: ${operator}, secondVar: ${secondVar}`);
+   //   if (equation.operation === '+') {
+   //      answer = Number(equation.firstNumber) + Number(equation.secondNumber);
+   //      history.push( `${equation.firstNumber} + ${equation.secondNumber} = ${answer}`);
+   //   };
+   //   if (equation.operation === '-') {
+   //      answer = Number(equation.firstNumber) - Number(equation.secondNumber);
+   //      history.push( `${equation.firstNumber} - ${equation.secondNumber} = ${answer}`);
+   //   };
+   //   if (equation.operation === '*') {
+   //      answer = Number(equation.firstNumber) * Number(equation.secondNumber);
+   //      history.push( `${equation.firstNumber} * ${equation.secondNumber} = ${answer}`);
+   //   };
+   //   if (equation.operation === '/') {
+   //      answer = Number(equation.firstNumber) / Number(equation.secondNumber);
+   //      history.push( `${equation.firstNumber} / ${equation.secondNumber} = ${answer}`);
+   //   };
+   //   console.log(answer);
 }
 // This funciton figures out what kind of calculation to plug in our number input values.
 
