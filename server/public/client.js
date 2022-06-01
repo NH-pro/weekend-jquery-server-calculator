@@ -14,7 +14,7 @@ let serverHistory = [];
 function onReady() {
     console.log('--- jQuery is connected! ---');
 
-    $('#equation_input_container').on('click', '#equals_button', collectEquationInputs);
+    $(document).on('click', '#equals_button', collectEquationInputs);
     $('#equation_input_container').on('click', '#clear_button', clearInputs);
     $('#equation_input_container').on('click', '#clear_history', clearHistory);
     $('#calculator_container').on('click', '.calc_btn', typeEquation);
@@ -54,27 +54,29 @@ function clearInputs(){
 };
 
 function collectEquationInputs() {
-    console.log(`--- In sendEquationInputs! ---`);
+    console.log(`--- In collectEquationInputs! ---`);
     // Test to see if function is connected to click event.
+    let equationIn = $('#equation_input').val();
 
-    firstNumber = Number($('#first_number').val());
-    operation = $('#operation_select').val();
-    secondNumber = Number($('#second_number').val());
-    // Assign input values from html and assign to vars.
-    console.log(`These are the user's inputs:`,firstNumber, operation, secondNumber);
-    // Test to see if values are connected properly.
+    // firstNumber = Number($('#first_number').val());
+    // operation = $('#operation_select').val();
+    // secondNumber = Number($('#second_number').val());
+    // // Assign input values from html and assign to vars.
+    // console.log(`These are the user's inputs:`,firstNumber, operation, secondNumber);
+    // // Test to see if values are connected properly.
 
-    sendEquationInputs();
+    sendEquationInputs(equationIn);
 };
 
-function sendEquationInputs() {
+function sendEquationInputs(calculation) {
     console.log(`--- In sendEquationInputs! ---`);
     // Test for connection.
 
     let equation = {
-        firstNumber: firstNumber,
-        operation: operation,
-        secondNumber: secondNumber
+        eq: calculation
+        // firstNumber: firstNumber,
+        // operation: operation,
+        // secondNumber: secondNumber
     };
     // Create an equation object from user input values.
     console.log(equation);
